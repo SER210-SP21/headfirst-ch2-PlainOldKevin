@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -19,11 +20,26 @@ public class CalcActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button add = (Button) findViewById(R.id.add);
         Button subtract = (Button) findViewById(R.id.subtract);
-        Spinner spinner = (Spinner) findViewById(R.id.spinner);
         input1 = (EditText) findViewById(R.id.input1);
         input2 = (EditText) findViewById(R.id.input2);
         result = (TextView) findViewById(R.id.result);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
+        spinner.setSelection(0,false);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String op = (String) adapterView.getItemAtPosition(i);
+                if (op.equals('*'))
+                    performOp('*');
+                else
+                    performOp('/');
+            }
 
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
