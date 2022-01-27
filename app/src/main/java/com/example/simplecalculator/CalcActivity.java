@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 public class CalcActivity extends AppCompatActivity {
@@ -18,6 +19,7 @@ public class CalcActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Button add = (Button) findViewById(R.id.add);
         Button subtract = (Button) findViewById(R.id.subtract);
+        Spinner spinner = (Spinner) findViewById(R.id.spinner);
         input1 = (EditText) findViewById(R.id.input1);
         input2 = (EditText) findViewById(R.id.input2);
         result = (TextView) findViewById(R.id.result);
@@ -27,6 +29,12 @@ public class CalcActivity extends AppCompatActivity {
             public void onClick(View view) {
                 performOp('+');
 
+            }
+        });
+        subtract.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                performOp('-');
             }
         });
     }
